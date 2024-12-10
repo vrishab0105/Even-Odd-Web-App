@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Even Odd app by Vrishab</title>
+        <style>
+            body {
+                background-color: #f0f8ff;
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px;
+                border-radius: 10px;
+                width: 60%;
+                margin: auto;
+            }
+            input[type="number"], input[type="submit"] {
+                padding: 10px;
+                margin: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                font-size: 16px;
+            }
+            input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+            form {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                margin: 20px auto;
+            }
+            #msg {
+                font-size: 20px;
+                color: #333;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>App to find Even or Odd</h1>
+            <form onsubmit="EO()" >
+                <input type="number" id="num" placeholder="Enter an integer"/>
+                <br/><br/>
+                <input type="submit" value="M1">
+                <input type="submit" value="M2">
+                <input type="submit" value="M3">
+            </form>
+
+            <h2 id="msg"></h2>
+        </center>
+
+        <script>
+            function EO() {
+                event.preventDefault();
+                let num = document.getElementById("num");
+                let msg = document.getElementById("msg");
+                let action = document.activeElement.value;
+                let n = parseInt(num.value);
+
+                if (num.value === "") {
+                    alert("Please enter Any Integer");
+                    msg.innerHTML = "";
+                    num.focus();
+                    return;
+                }
+
+                let rep = "";
+                if (action === "M1") {
+                    rep = n % 2 === 0 ? "By Method 1: Conditional Statement: " + n + " is Even" : "By Method 1: Conditional Statement: " + n + " is Odd";
+                    msg.innerHTML = rep;
+                } else if (action === "M2") {
+                    if (n % 2 === 0) {
+                        rep = "By Method 2: If-else loop: " + n + " is Even";
+                    } else {
+                        rep = "By Method 2: If-else loop: " + n + " is Odd";
+                    }
+                    msg.innerHTML = rep;
+                } else if (action === "M3") {
+                    switch (n % 2) {
+                        case 0:
+                            rep = "By Method 3: Switch case: " + n + " is Even";
+                            break;
+                        default:
+                            rep = "By Method 3: Switch case: " + n + " is Odd";
+                            break;
+                    }
+                    msg.innerHTML = rep;
+                }
+            }
+        </script>
+    </body>
+</html>
